@@ -1,4 +1,5 @@
 import React from "react";
+import ControlPresupuesto from "./ControlPresupuesto";
 import NuevoPresupuesto from "./NuevoPresupuesto";
 
 function Header({
@@ -12,7 +13,7 @@ function Header({
       <h1>Planificador de Gastos</h1>
 
       {isValidPresupuesto ? (
-        <p>Control</p>
+        <ControlPresupuesto presupuesto={presupuesto} />
       ) : (
         <NuevoPresupuesto
           presupuesto={presupuesto}
