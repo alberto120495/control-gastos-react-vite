@@ -2,10 +2,15 @@ import { useEffect, useState } from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
-function ControlPresupuesto({ presupuesto, gastos }) {
+function ControlPresupuesto({
+  presupuesto,
+  setPresupuesto,
+  gastos,
+  setGastos,
+  setIsValidPresupuesto,
+}) {
   const [disponible, setDisponible] = useState(0);
   const [gastado, setGastado] = useState(0);
-
   const [porcentaje, setPorcentaje] = useState(0);
 
   const formatearCantidad = (cantidad) => {
@@ -23,7 +28,7 @@ function ControlPresupuesto({ presupuesto, gastos }) {
 
     const totalDisponible = presupuesto - totalGastado;
 
-    //Calcular porcentaje
+    //?Calcular porcentaje
     const nuevoPorcentaje = (
       ((presupuesto - totalDisponible) / presupuesto) *
       100
@@ -33,6 +38,15 @@ function ControlPresupuesto({ presupuesto, gastos }) {
     setDisponible(totalDisponible);
     setGastado(totalGastado);
   }, [gastos]);
+
+  const handleReset = () => {
+    const resultado = confirm("¿Deseas reiniciar Presupuesto y Gastos?");
+    if (resultado) {
+      setGastos([]);
+      setPresupuesto(0);
+      setIsValidPresupuesto(false);
+    }
+  };
 
   return (
     <div className="contenedor-presupuesto contenedor sombra dos-columnas">
@@ -49,6 +63,10 @@ function ControlPresupuesto({ presupuesto, gastos }) {
       </div>
 
       <div className="contenido-presupuesto">
+        <button className="reset-app" type="button" onClick={handleReset}>
+          {" "}
+          Resetear App
+        </button>
         <p>
           <span>Presupuesto: </span>
           {formatearCantidad(presupuesto)}

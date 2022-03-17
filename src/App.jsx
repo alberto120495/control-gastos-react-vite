@@ -18,14 +18,10 @@ function App() {
   );
 
   const [isValidPresupuesto, setIsValidPresupuesto] = useState(false);
-
   const [modal, setModal] = useState(false);
   const [animarModal, setAnimarModal] = useState(false);
-
   const [gastoEditar, setGastoEditar] = useState({});
-
   const [filtro, setFiltro] = useState("");
-
   const [gastosFiltrados, setGastosFiltrados] = useState([]);
 
   useEffect(() => {
@@ -72,14 +68,14 @@ function App() {
 
   const guardarGasto = (gasto) => {
     if (gasto.id) {
-      //actualizar
+      //?Actualizar
       const gastosActualizados = gastos.map((gastoState) =>
         gastoState.id === gasto.id ? gasto : gastoState
       );
       setGastos(gastosActualizados);
       setGastoEditar({});
     } else {
-      //nuevo
+      //?Nuevo
       gasto.id = generarId();
       gasto.fecha = Date.now();
       setGastos([...gastos, gasto]);
@@ -97,11 +93,12 @@ function App() {
   return (
     <div className={modal ? "fijar" : ""}>
       <Header
+        gastos={gastos}
+        setGastos={setGastos}
         presupuesto={presupuesto}
         setPresupuesto={setPresupuesto}
         isValidPresupuesto={isValidPresupuesto}
         setIsValidPresupuesto={setIsValidPresupuesto}
-        gastos={gastos}
       />
 
       {isValidPresupuesto && (
