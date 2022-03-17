@@ -30,20 +30,20 @@ const diccionarioIconos = {
   suscripciones: IconoSuscripciones,
 };
 
-function Gasto({ gasto }) {
+function Gasto({ gasto, setGastoEditar, eliminarGasto }) {
   const { categoria, nombre, cantidad, id, fecha } = gasto;
 
   const leadingActions = () => {
     return (
       <LeadingActions>
-        <SwipeAction onClick={() => console.log("Editar")}>Editar</SwipeAction>
+        <SwipeAction onClick={() => setGastoEditar(gasto)}>Editar</SwipeAction>
       </LeadingActions>
     );
   };
   const trailingActions = () => {
     return (
       <TrailingActions>
-        <SwipeAction onClick={() => console.log("Eliminar")}>
+        <SwipeAction onClick={() => eliminarGasto(id)} destructive={true}>
           Eliminar
         </SwipeAction>
       </TrailingActions>
