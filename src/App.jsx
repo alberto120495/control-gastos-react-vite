@@ -28,12 +28,13 @@ function App() {
     setGastos([...gastos, gasto]);
   };
   return (
-    <div className={modal && "fijar"}>
+    <div className={modal ? "fijar" : ""}>
       <Header
         presupuesto={presupuesto}
         setPresupuesto={setPresupuesto}
         isValidPresupuesto={isValidPresupuesto}
         setIsValidPresupuesto={setIsValidPresupuesto}
+        gastos={gastos}
       />
 
       {isValidPresupuesto && (
