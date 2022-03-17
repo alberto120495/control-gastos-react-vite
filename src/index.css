@@ -130,6 +130,9 @@ header h1 {
   border-radius: 1rem;
   text-align: center;
   background-color: var(--gris-claro);
+}
+
+select {
   outline: none;
 }
 
@@ -209,7 +212,7 @@ header h1 {
 }
 .contenido-presupuesto p.negativo,
 .contenido-presupuesto p.negativo span {
-  color: red;
+  color: #dc2626;
 }
 .contenido-presupuesto span {
   font-weight: 900;
